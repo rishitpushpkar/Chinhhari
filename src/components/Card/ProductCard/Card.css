@@ -1,0 +1,58 @@
+.productCard_container {
+  width: 20vw;
+  min-width: 160px;
+  border-radius: 0.5rem;
+
+  padding: 1rem;
+}
+
+.btnBox {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.productCard_container .btnBox > button {
+  flex-grow: 1;
+  padding: 10px 20px;
+  font-weight: 500;
+  border-radius: 0.2rem;
+}
+
+.productCard_container .btnBox > button:first-of-type {
+  border: 1.5px solid #715925;
+  color: #715925;
+}
+
+.productCard_container .btnBox > button:last-of-type {
+  border: 1.5px solid #715925;
+  background-color: #715925;
+  color: white;
+}
+
+#slideshow-items-container img {
+  border-radius: 0.2rem;
+}
+
+.imagesBox {
+  margin: 1% 0;
+  scrollbar-width: none;
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 8px;
+
+  overflow-x: scroll;
+}
+
+.imagesBox img {
+  border-radius: 0.2rem;
+  height: 3rem;
+}
+
+@media screen and (max-width: 926px) {
+  .productCard_container .btnBox > button {
+    padding: 10px 5px;
+  }
+}

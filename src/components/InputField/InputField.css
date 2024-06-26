@@ -1,0 +1,147 @@
+.inputField {
+  padding: 10px 12px 10px 12px;
+  border: 1px solid var(--neutrals-neutral-grey);
+  border-radius: 12px;
+  background-color: var(--neutrals-white);
+}
+
+.textfield,
+.number {
+  overflow-x: hidden;
+  white-space: nowrap;
+  resize: none;
+  height: 48px;
+  width: 100%;
+}
+
+.textarea {
+  min-height: 138px;
+  height: auto;
+  width: 280px;
+  resize: both;
+}
+
+.dNone {
+  display: none;
+}
+
+.lableRemoved {
+  display: none;
+}
+
+.errorMsg {
+  color: var(--semantics-danger);
+}
+
+.errorStyle:focus {
+  border: 1px solid var(--semantics-danger) !important;
+}
+
+#textField::placeholder {
+  color: var(--neutrals-low-grey);
+}
+
+#textField:focus,
+.dropdown_container button:focus {
+  outline: none;
+  border: 1px solid var(--semantics-flash);
+}
+
+.disableStyle {
+  border: 1px solid var(--primary-pastel) !important;
+  background-color: var(--primary-light) !important;
+  color: var(--primary-pastel) !important;
+}
+
+/* .inputField:disabled {
+    color: red !important;
+  } */
+
+.textField_container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.textField_container div:first-of-type,
+.dropdown_container div:first-of-type {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.textField_container div:first-of-type img,
+.dropdown_container div:first-of-type img:first-child {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* ------------------------------------------------- Dropdown CSS --------------------------------------------------- */
+
+.custom-dropdown {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.custom-dropdown-button {
+  padding: 10px 20px;
+  background-color: var(--neutrals-white);
+  cursor: pointer;
+}
+
+.custom-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: var(--neutrals-white);
+  z-index: 1000;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.custom-dropdown-item {
+  padding: 10px 20px; /* Add padding here */
+  cursor: pointer;
+  border-radius: 7px;
+}
+
+.custom-dropdown-item:hover {
+  background-color: var(--neutrals-lowest-grey);
+}
+
+.arrow img {
+  height: max-content;
+  width: 40px;
+}
+
+.dropdown_container div button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px 10px 12px;
+  border: 1px solid var(--neutrals-neutral-grey);
+  border-radius: 12px;
+  width: 100%;
+  height: 48px;
+}
+
+.dropdown_container ul {
+  border-radius: 7px;
+  margin-top: 2%;
+  border: none;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.dropdown_container div button span {
+  color: var(--neutrals-low-grey);
+}
+
+.disableColor {
+  color: var(--primary-pastel) !important;
+}

@@ -1,0 +1,113 @@
+nav {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 0% 4%;
+  background-color: white;
+  position: fixed;
+  top: 0%;
+  z-index: 99;
+}
+
+.brandlogoBox {
+  margin: 0 auto;
+  padding: 0.5rem;
+}
+
+nav div:nth-of-type(3) {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 5%;
+}
+
+.endNavSection {
+  display: flex;
+  justify-content: end;
+  gap: 5%;
+}
+
+.endNavSection img:hover {
+  cursor: pointer;
+}
+
+.searchBox {
+  position: relative;
+}
+
+.searchBox input {
+  width: 100%;
+  height: 2rem;
+  font-size: 15px;
+  border: none;
+  background-color: #ebebeb;
+  border-radius: 2rem;
+  padding: 10px 10px 10px 30px;
+}
+
+.searchBox input:focus,
+.searchBox input:active {
+  outline: 2px solid #02847c;
+}
+
+.searchBox img {
+  position: absolute;
+  top: 50%;
+  left: 5.5%;
+  transform: translateY(-50%);
+}
+
+.endNavSection div:nth-of-type(2) {
+  position: relative;
+}
+
+.cartItem {
+  font-size: 8px;
+  font-weight: 500;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  height: 12px;
+  width: 12px;
+  background-color: red;
+  border-radius: 50%;
+}
+
+@media screen and (max-width: 768px) {
+  .brandlogoBox {
+    grid-column: 1/2;
+  }
+  .endNavSection {
+    grid-column: 2/4;
+  }
+  .endNavSection img {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .searchBox {
+    position: absolute;
+    left: 0;
+    top: 90%;
+  }
+  .searchBox input:focus {
+    outline: none;
+    border-bottom: 2px solid #715925;
+  }
+
+  .searchBox input {
+    width: 100vw;
+    height: 3.5rem;
+    font-size: 15px;
+    border: none;
+    background-color: #ebebeb;
+    border-radius: 0;
+    padding: 10px 10px 10px 70px;
+  }
+}

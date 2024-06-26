@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-accent: rgba(54, 41, 183, 1);
+  --primary-shade: rgba(86, 85, 185, 1);
+  --primary-pastel: rgba(168, 163, 215, 1);
+  --primary-light: rgba(242, 241, 249, 1);
+
+  --neutrals-black: rgba(0, 0, 0, 1);
+  --neutrals-highest-grey: rgba(20, 20, 20, 1);
+  --neutrals-high-grey: rgba(43, 43, 43, 1);
+  --neutrals-neutral-grey: rgba(115, 115, 115, 1);
+  --neutrals-low-grey: rgba(203, 203, 203, 1);
+  --neutrals-lowest-grey: rgba(245, 245, 245, 1);
+  --neutrals-white: rgba(255, 255, 255, 1);
+
+  --semantics-danger: rgba(230, 39, 39, 1);
+  --semantics-flash: rgba(20, 110, 216, 1);
+  --semantics-warning: rgba(214, 137, 10, 1);
+  --semantics-success: rgba(12, 183, 18, 1);
+  --semantics-caution: rgba(255, 100, 11, 1);
+}
