@@ -12,3 +12,8 @@ input[type="number"] {
 input[type="number"] {
   -moz-appearance: textfield; /* Firefox */
 }
+
+body {
+  /* font-family: "Instrument Serif", serif; */
+  font-family: "Instrument Sans", sans-serif;
+}

@@ -32,7 +32,7 @@
 }
 
 .collection_container figure .overlay h2 {
-  font-size: 60px;
+  font-size: 32px;
 }
 
 .collection_container figure .overlay h2 strong {
@@ -56,7 +56,7 @@
   width: 100%;
   height: 100%;
   background-blend-mode: darken;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(99, 68, 8, 0.699);
   color: #fff;
   opacity: 0;
 }
@@ -148,6 +148,9 @@
   justify-content: end;
   margin: 1rem;
 }
+/* -------------------- */
+
+/* -------------------- */
 
 @media screen and (max-width: 768px) {
   .sliderContainer {
@@ -165,7 +168,7 @@
     grid-auto-rows: 250px;
   }
   .collection_container figure .overlay h2 strong {
-    font-size: 40px;
+    font-size: 32px;
   }
 
   .collection_container figure .overlay p {
