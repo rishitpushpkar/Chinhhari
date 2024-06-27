@@ -14,6 +14,13 @@ export default function Home({ filteredProducts, onCategoryChange }) {
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [openPanel, setOpenPanel] = useState(false);
   const [enquiryList, setEnquiryList] = useState([]);
+  const [resetForm, setResetForm] = useState(false);
+
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    mobileNo: "",
+  });
 
   const updateEnquiry = (
     product_id,
@@ -66,6 +73,18 @@ export default function Home({ filteredProducts, onCategoryChange }) {
     console.log("Selected Categories:", newSelectedCategories);
     setSelectedCategories(newSelectedCategories);
     onCategoryChange(newSelectedCategories);
+  };
+
+  const getInputValue = (inputName, inputData) => {
+    setFormData((prev) => ({ ...prev, [inputName]: inputData }));
+    // console.log(formData);
+  };
+
+  const formHandler = (e) => {
+    setResetForm(true);
+    e.preventDefault();
+
+    console.log("Form Data:", formData);
   };
 
   return (
@@ -165,26 +184,40 @@ export default function Home({ filteredProducts, onCategoryChange }) {
               <div className="enquiryContainer">
                 <section>
                   <article>
-                    <div>
-                      <InputField
-                        inputType="textfield"
-                        placeholder="Full Name"
-                        maxLength={10}
-                        minLength={10}
-                      />
-                    </div>
-                    <div>
-                      <InputField inputType="textfield" placeholder="Email" />
-                    </div>
-                    <div>
-                      <InputField
-                        inputType="textfield"
-                        placeholder="Mobile No."
-                        maxLength={10}
-                        minLength={10}
-                      />
-                    </div>
-                    <button className="submitEnquiryBtn">Submit Enquiry</button>
+                    <form action="" onSubmit={formHandler}>
+                      <div>
+                        <InputField
+                          inputType="textfield"
+                          inputName="fullName"
+                          placeholder="Full Name"
+                          resetForm={resetForm}
+                          getInputValue={getInputValue}
+                        />
+                      </div>
+                      <div>
+                        <InputField
+                          inputType="textfield"
+                          placeholder="email"
+                          resetForm={resetForm}
+                          inputName="email"
+                          getInputValue={getInputValue}
+                        />
+                      </div>
+                      <div>
+                        <InputField
+                          inputType="textfield"
+                          inputName="mobileNo"
+                          placeholder="Mobile No."
+                          resetForm={resetForm}
+                          maxLength={10}
+                          minLength={10}
+                          getInputValue={getInputValue}
+                        />
+                      </div>
+                      <button type="submit" className="submitEnquiryBtn">
+                        Submit Enquiry
+                      </button>
+                    </form>
                   </article>
                 </section>
 

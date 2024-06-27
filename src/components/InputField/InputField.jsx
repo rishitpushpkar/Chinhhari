@@ -1,45 +1,24 @@
 import "./InputField.css";
 import PropTypes from "prop-types";
-import { useState, useEffect, useRef } from "react";
-import downArrowIcon from "./../../assets/Images/dropdown-arrow-svgrepo-com.svg";
+import { useState, useEffect } from "react";
 
 export default function InputField({
-  inputType = "",
-  label = "",
-  placeholder = "",
+  inputType = null,
+  label = null,
+  placeholder = null,
   isRequired = false,
   isDisabled = false,
   maxLength = Infinity,
   minLength = Infinity,
+  inputName = null,
   validate,
-  options,
-  prefixIcon = "",
+  prefixIcon = null,
   maxWidth,
+  getInputValue,
+  resetForm,
 }) {
   const [hasError, setHasError] = useState(false);
   const [inputValue, setInputValue] = useState("");
-  const [isOpen, setIsOpen] = useState(false);
-  const [selected, setSelected] = useState("");
-
-  const dropdownRef = useRef(null);
-
-  const toggleDropdown = () => {
-    if (!isDisabled) {
-      setIsOpen(!isOpen);
-    }
-  };
-
-  const handleSelect = (option) => {
-    setSelected(option.label);
-    setIsOpen(false);
-  };
-
-  useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  });
 
   useEffect(() => {
     const textField = document.getElementById("textField");
@@ -56,14 +35,6 @@ export default function InputField({
     }
   }, []);
 
-  const handleClickOutside = (event) => {
-    if (!isDisabled) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setIsOpen(false);
-      }
-    }
-  };
-
   const inputChangeHandler = (event) => {
     let newValue = event.target.value;
 
@@ -77,55 +48,11 @@ export default function InputField({
     if (validate) {
       setHasError(!validate(newValue));
     }
+    getInputValue(event.target.name, event.target.value);
   };
 
   return (
     <>
-      {/* --------------------------------------------------------------------------------Dropdown------------------------------------------------------------------------- */}
-      {inputType.toLowerCase() == "dropdown" && (
-        <div
-          className={`custom-dropdown dropdown_container max-w-[${maxWidth}]`}
-          ref={dropdownRef}
-        >
-          <div>
-            {prefixIcon && <img src={prefixIcon} alt="SearchIcon" />}
-
-            <button
-              className={`subtitle_medium custom-dropdown-button  ${
-                isDisabled ? "disableStyle" : ""
-              } `}
-              style={prefixIcon ? { paddingLeft: "4.5rem" } : {}}
-              onClick={toggleDropdown}
-            >
-              {
-                <span className={isDisabled ? "disableColor" : ""}>
-                  {selected ? selected : placeholder}
-                </span>
-              }
-
-              <img
-                className={`arrow ${isOpen ? "open" : ""}`}
-                src={downArrowIcon}
-                alt="Dropdown Icon"
-              />
-            </button>
-          </div>
-          {!isDisabled && isOpen && (
-            <ul className="custom-dropdown-menu">
-              {options.map((option, index) => (
-                <li
-                  key={index}
-                  className="custom-dropdown-item subtitle_medium"
-                  onClick={() => handleSelect(option)}
-                >
-                  {option.label}
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-      )}
-      {/* ----------------------------------------------------------------------------------------------------------------------------------------------------------------- */}
       {/* --------------------------------------------------------------------------TextArea/TextField--------------------------------------------------------------------- */}
       {(inputType.toLowerCase() == "textfield" ||
         inputType.toLowerCase() == "textarea" ||
@@ -133,7 +60,7 @@ export default function InputField({
         <section className={`textField_container max-w-[${maxWidth}]`}>
           <label
             htmlFor={inputType}
-            className={`subtitle_small ${!label ? "lableRemoved" : ""}`}
+            className={`subtitle_small ${label ? "" : "lableRemoved"}`}
           >
             {label}
           </label>
@@ -143,7 +70,7 @@ export default function InputField({
               required={isRequired}
               maxLength={maxLength}
               minLength={minLength}
-              name={label}
+              name={inputName}
               disabled={isDisabled}
               id="textField"
               className={`subtitle_medium
@@ -153,7 +80,7 @@ export default function InputField({
               } `}
               label={label}
               style={prefixIcon ? { paddingLeft: "4.5rem" } : {}}
-              value={inputValue}
+              value={resetForm ? "" : inputValue}
               placeholder={placeholder}
               onChange={inputChangeHandler}
             />
@@ -170,9 +97,8 @@ export default function InputField({
 
 InputField.propTypes = {
   label: PropTypes.string,
-  inputType: PropTypes.string,
+  inputType: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
-  textArea: PropTypes.bool,
   isRequired: PropTypes.bool,
   maxWidth: PropTypes.string,
   validate: PropTypes.func,
@@ -180,12 +106,7 @@ InputField.propTypes = {
   maxLength: PropTypes.number,
   minLength: PropTypes.number,
   prefixIcon: PropTypes.string,
-  options: PropTypes.arrayOf(
-    PropTypes.shape({
-      label: PropTypes.string,
-      value: PropTypes.string,
-      variant: PropTypes.string,
-    })
-  ),
-  onSelect: PropTypes.func,
+  inputName: PropTypes.string.isRequired,
+  getInputValue: PropTypes.func,
+  resetForm: PropTypes.bool,
 };

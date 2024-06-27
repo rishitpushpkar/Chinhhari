@@ -1,0 +1,49 @@
+.enquiryContainer {
+  margin: 2% auto 0%;
+  width: 90%;
+}
+
+.enquiryContainer section article div {
+  margin-bottom: 2%;
+}
+
+.enquiryContainer > section:first-of-type > article:first-of-type {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5%;
+}
+
+.enquiryContainer section article h1 {
+  margin-bottom: 3%;
+  font-weight: 600;
+  font-size: 25px;
+}
+
+.enquiryContainer > section:nth-of-type(1) {
+  flex-basis: 30%;
+  margin: 2%;
+}
+
+.enquiryContainer > section:nth-of-type(2) {
+  margin-top: 2%;
+}
+
+.submitEnquiryBtn {
+  border: 1px solid 715925;
+  padding: 10px 12px 10px 12px;
+  border-radius: 12px;
+  color: white;
+
+  background-color: #715925;
+}
+
+#sameBilling_container {
+  margin-bottom: 2.8rem;
+}
+
+.saveInfoCheckboxContainer {
+  display: flex;
+  align-items: center;
+}
+
+/* ------------------------------------------------------------------------------------------------------- */
