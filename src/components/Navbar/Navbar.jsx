@@ -31,7 +31,6 @@ export default function Navbar({ onSearchChange, isEnquiryPage }) {
               onChange={handleInputChange}
             />
           </div>
-          <img src={userCircle} alt="User Profile" />
         </div>
       </nav>
     </>

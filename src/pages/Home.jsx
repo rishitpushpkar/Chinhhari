@@ -1,16 +1,16 @@
 import Card from "../components/Card/ProductCard/Card";
 import Slider from "../components/Slider/Slider";
 import "../styles/Home.css";
-import { ourCollection } from "../utils/Constant";
+import { ourCollection, product_filter } from "../utils/Constant";
 import InputField from "../components/InputField/InputField";
 import EnquiryCard from "../components/Card/EnquiryCard/EnquiryCard";
 import PropTypes from "prop-types";
 import crossIcon from "../assets/Images/cross-svgrepo-com.svg";
-import Sidebar from "../components/Sidebar/Sidebar";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Home({ filteredProducts, onCategoryChange }) {
+  const [localSelectedCategories, setLocalSelectedCategories] = useState([]);
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [openPanel, setOpenPanel] = useState(false);
   const [enquiryList, setEnquiryList] = useState([]);
@@ -53,31 +53,23 @@ export default function Home({ filteredProducts, onCategoryChange }) {
     setEnquiryList(updatedEnquiryList);
   };
 
-  const handleCheckboxChange = (newSelectedCategories, event) => {
-    if (!event || !event.target) {
-      console.error("Event or event.target is undefined:", event);
-      return;
-    }
+  useEffect(() => {
+    setLocalSelectedCategories(selectedCategories);
+  }, [selectedCategories]);
 
-    const { value, checked } = event.target;
-    console.log("Value:", value, "Checked:", checked);
+  // const handleCheckboxChange = (event) => {
+  //   const { value, checked } = event.target;
+  //   const newSelectedCategories = checked
+  //     ? [...localSelectedCategories, value]
+  //     : localSelectedCategories.filter((category) => category !== value);
 
-    if (checked) {
-      newSelectedCategories.push(value);
-    } else {
-      newSelectedCategories = newSelectedCategories.filter(
-        (category) => category !== value
-      );
-    }
-
-    console.log("Selected Categories:", newSelectedCategories);
-    setSelectedCategories(newSelectedCategories);
-    onCategoryChange(newSelectedCategories);
-  };
+  //   setLocalSelectedCategories(newSelectedCategories);
+  //   setSelectedCategories(newSelectedCategories);
+  //   onCategoryChange(newSelectedCategories);
+  // };
 
   const getInputValue = (inputName, inputData) => {
     setFormData((prev) => ({ ...prev, [inputName]: inputData }));
-    // console.log(formData);
   };
 
   const formHandler = (e) => {
@@ -85,6 +77,21 @@ export default function Home({ filteredProducts, onCategoryChange }) {
     e.preventDefault();
 
     console.log("Form Data:", formData);
+  };
+
+  useEffect(() => {
+    setLocalSelectedCategories(selectedCategories);
+  }, [selectedCategories]);
+
+  const handleButtonClick = (event) => {
+    const value = event.target.value;
+    const newSelectedCategories = localSelectedCategories.includes(value)
+      ? localSelectedCategories.filter((category) => category !== value)
+      : [...localSelectedCategories, value];
+
+    setLocalSelectedCategories(newSelectedCategories);
+    setSelectedCategories(newSelectedCategories);
+    onCategoryChange(newSelectedCategories, event);
   };
 
   return (
@@ -267,11 +274,33 @@ export default function Home({ filteredProducts, onCategoryChange }) {
           );
         })}
       </section>
+      <aside className="filterSection">
+        <div>
+          <h1>Filter By Categories</h1>
+        </div>
+        <div className="flex items-center ml-5">
+          {product_filter.map((i, index) => {
+            const lowerCaseType = i.type.toLowerCase();
+            const isActive = localSelectedCategories.includes(lowerCaseType);
+            return (
+              <div key={index}>
+                <button
+                  className={`ms-2 ${
+                    isActive
+                      ? "bg-[#715925] text-white"
+                      : "bg-white text-[#715925]"
+                  }`}
+                  value={lowerCaseType}
+                  onClick={handleButtonClick}
+                >
+                  {i.type}
+                </button>
+              </div>
+            );
+          })}
+        </div>
+      </aside>
       <section className="itemsContainer mb-[5%]">
-        <Sidebar
-          selectedCategories={selectedCategories}
-          onCheckboxChange={handleCheckboxChange}
-        />
         <main>
           {filteredProducts.map((i) => {
             return (

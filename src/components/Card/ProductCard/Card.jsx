@@ -119,7 +119,7 @@ export default function Card({
             </div>
           </section>
         </div>
-        <h1 className="font-semibold">{product_name}</h1>
+        <h1 className="font-semibold ">{product_name}</h1>
         <h2 className="font-light">{product_description}</h2>
         <div>
           <strong className=" font-bold">{product_price}</strong>

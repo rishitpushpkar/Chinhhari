@@ -22,9 +22,59 @@
 }
 
 .itemsContainer main {
-  padding: 5% auto;
+  padding: 1% 3%;
   display: flex;
   flex-wrap: wrap;
+}
+
+.filterSection {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 1rem;
+  padding-left: 0;
+  gap: 1rem;
+}
+
+.filterSection div:nth-of-type(2) div {
+  display: flex;
+  justify-content: start;
+}
+.filterSection div:nth-of-type(2) {
+  overflow-x: scroll;
+  scrollbar-width: none;
+}
+
+.filterSection div:nth-of-type(2) div {
+  width: 100%;
+}
+
+.filterSection div:nth-of-type(2) div button {
+  padding: 0.7vw 1.5vw;
+  border-radius: 0.2rem;
+  font-size: 1.3rem;
+  margin: 0 0.6rem;
+  font-weight: 500;
+  border: 2px solid #715925;
+}
+
+.filterSection div:nth-of-type(2) div button:hover {
+  background-color: #715925;
+  color: white;
+  border: 2px solid #715925;
+}
+
+.filterSection div:first-of-type h1 {
+  color: white;
+  white-space: nowrap;
+  background-color: #715925;
+  border-top-right-radius: 0.2rem;
+  border-bottom-right-radius: 0.2rem;
+  padding: 0.8rem 2rem;
+  width: auto;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 400;
 }
 
 .itemsContainer {
@@ -136,11 +186,11 @@
 }
 
 .enquiryListContainer > div:nth-of-type(3) button {
-  padding: 1rem 1.5rem;
   background-color: white;
   color: #715925;
   font-weight: 600;
   font-size: 18px;
+  padding: 0.8rem 1.5rem;
 }
 
 .enquiryListContainer > div:nth-of-type(3) {
@@ -204,6 +254,13 @@
 @media screen and (max-width: 768px) {
   .sliderContainer {
     margin: 15vw auto;
+  }
+  .filterSection div:first-of-type {
+    width: 100%;
+  }
+  .filterSection {
+    padding: 0;
+    border-radius: 0;
   }
 }
 
