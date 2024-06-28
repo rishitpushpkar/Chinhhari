@@ -20,7 +20,7 @@ export default function EnquiryCard({
 
   useEffect(() => {
     window.localStorage.setItem(`${product_id}_Quantity`, productQuantity);
-  }, [productQuantity]);
+  }, [productQuantity, product_id]);
 
   const enquiryDeleteHandler = () => {
     deleteEnquiry(product_id);
@@ -56,7 +56,9 @@ export default function EnquiryCard({
               </div>
             ) : (
               <strong>
-                x{window.localStorage.getItem(`${product_id}_Quantity`)}
+                {window.localStorage.getItem(`${product_id}_Quantity`)
+                  ? `x${window.localStorage.getItem(`${product_id}_Quantity`)}`
+                  : "x1"}
               </strong>
             )}
             {wantBtns && (
