@@ -4,6 +4,7 @@ import youtubeIcon from "../../assets/Images/youtube.svg";
 import linkedin from "../../assets/Images/linkedin.svg";
 import pinterest from "../../assets/Images/pinterest.svg";
 import logo_white from "../../assets/Images/chinhhari_logo_white_1_x39@2x.png";
+import whatsapp from "../../assets/Images/whatsapp.svg";
 import "./Footer.css";
 // import { Link } from "react-router-dom";
 
@@ -20,10 +21,15 @@ export default function Footer() {
         icon: facebook,
         url: "https://www.facebook.com/chinhhariarts",
       },
+      // {
+      //   platform: "Linkedin",
+      //   icon: linkedin,
+      //   url: "https://www.linkedin.com/company/chinhhari-arts-studio/",
+      // },
       {
-        platform: "Linkedin",
-        icon: linkedin,
-        url: "https://www.linkedin.com/company/chinhhari-arts-studio/",
+        platform: "Whatsapp",
+        icon: whatsapp,
+        url: "/",
       },
       {
         platform: "Youtube",
@@ -37,27 +43,19 @@ export default function Footer() {
       },
     ],
     company: [
-      { companyInfo: "About Us", link: "/" },
-      { companyInfo: "Contact Us", link: "/" },
-      { companyInfo: "Collections", link: "/" },
-      { companyInfo: "Custom made Design", link: "/" },
-    ],
-    customerPolicies: [
-      { page: "Return Policy", link: "/" },
-      { page: "Privacy Policy", link: "/" },
-      { page: "Terms of Services", link: "/" },
-      { page: "Shipping Details", link: "/" },
-    ],
-    contactUs: {
-      supportMail: { text: "Support Mail", mail: "shopwhole@gmail.in" },
-      telephone: { text: "Telephone", ph: 91045451813 },
-      RegisteredAddress: {
-        text: "REGISTERED ADDRESS",
-        address: `Shopwhole Pvt. ltd.
-      124,Block C, anan vihar, Phase 3,
-      sitapur, UP - 122001`,
+      {
+        companyInfo: "About Us",
+        link: "https://chinhhariarts.org/pages/about-us",
       },
-    },
+      {
+        companyInfo: "Contact",
+        link: "https://chinhhariarts.org/pages/contact-us",
+      },
+      {
+        companyInfo: "Collections",
+        link: "https://chinhhariarts.org/collections",
+      },
+    ],
   };
 
   return (
@@ -67,54 +65,29 @@ export default function Footer() {
           <div>
             <img src={logo_white} alt="Brand Logo" />
           </div>
+        </section>
+        <section>
+          <ul>
+            {footer_details.company.map((e, index) => {
+              return (
+                <li key={index}>
+                  <a href={e.link}>{e.companyInfo}</a>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+        <section>
           <ul>
             {footer_details.reachOut.map((e, index) => {
               return (
                 <li key={index}>
-                  <a>
+                  <a href={e.url}>
                     <img src={e.icon} alt={`${e.platform} Icon`} />
                   </a>
                 </li>
               );
             })}
-          </ul>
-        </section>
-        <section>
-          <strong>Company</strong>
-          <ul>
-            {footer_details.company.map((e, index) => {
-              return (
-                <li key={index}>
-                  <a>{e.companyInfo}</a>
-                </li>
-              );
-            })}
-          </ul>
-        </section>
-        <section>
-          <strong>Customer Policies</strong>
-          <ul>
-            {footer_details.customerPolicies.map((e, index) => {
-              return (
-                <li key={index}>
-                  <a>{e.page}</a>
-                </li>
-              );
-            })}
-          </ul>
-        </section>
-        <section>
-          <strong>Contact us</strong>
-          <ul>
-            <li>
-              {`${footer_details.contactUs.supportMail.text}-${footer_details.contactUs.supportMail.mail}`}
-            </li>
-            <li>
-              {`${footer_details.contactUs.telephone.text}-${footer_details.contactUs.telephone.ph}`}
-            </li>
-            <li>
-              {`${footer_details.contactUs.RegisteredAddress.text}-${footer_details.contactUs.RegisteredAddress.address}`}
-            </li>
           </ul>
         </section>
 
